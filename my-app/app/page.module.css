@@ -4,165 +4,434 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #0a192f, #020c1b);
-  font-family: var(--font-geist-sans), sans-serif;
+  /* 과일 캐릭터 배경 이미지 */
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
+  font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
 }
 
-.blob1, .blob2 {
+/* 파스텔톤 과일/캔디 blur 구체 */
+.bubble {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(50px);
+  opacity: 0.6;
   z-index: 0;
-  opacity: 0.5;
-  animation: float 10s infinite ease-in-out alternate;
+  pointer-events: none;
 }
 
-.blob1 {
-  width: 400px;
-  height: 400px;
-  background: #173b75;
-  top: -100px;
-  left: -100px;
+.melon {
+  width: 250px;
+  height: 250px;
+  background-color: #A7F3D0;
+  /* 파스텔 그린 */
+  top: -50px;
+  left: -50px;
+  animation: floatSlow1 12s infinite ease-in-out alternate;
 }
 
-.blob2 {
-  width: 300px;
-  height: 300px;
-  background: #0f62fe;
-  bottom: -50px;
-  right: -50px;
-  animation-delay: -5s;
+.cherry {
+  width: 200px;
+  height: 200px;
+  background-color: #FECDD3;
+  /* 파스텔 레드 */
+  bottom: -40px;
+  left: 10%;
+  animation: floatSlow2 15s infinite ease-in-out alternate;
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+.orange {
+  width: 280px;
+  height: 280px;
+  background-color: #FED7AA;
+  /* 파스텔 오렌지 */
+  top: 15%;
+  right: -80px;
+  animation: floatSlow3 18s infinite ease-in-out alternate-reverse;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 3.5rem 3rem;
-  width: 90%;
-  max-width: 480px;
-  z-index: 1;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transform: translateY(30px);
-  opacity: 0;
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+.blueberry {
+  width: 180px;
+  height: 180px;
+  background-color: #DDD6FE;
+  /* 파스텔 퍼플 */
+  bottom: 10%;
+  right: 15%;
+  animation: floatSlow1 14s infinite ease-in-out alternate-reverse;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7);
-  border-color: rgba(255, 255, 255, 0.2);
+.lemon {
+  width: 150px;
+  height: 150px;
+  background-color: #FEF9C3;
+  /* 파스텔 옐로우 */
+  top: 40%;
+  left: 20%;
+  animation: floatSlow2 10s infinite ease-in-out alternate;
 }
 
-@keyframes slideUp {
-  to {
-    transform: translateY(0);
-    opacity: 1;
+/* 구체 부유 애니메이션 */
+@keyframes floatSlow1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
   }
 }
 
-.avatarContainer {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  padding: 4px;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
-  transition: transform 0.5s ease;
+@keyframes floatSlow2 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-25px, 25px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
-.card:hover .avatarContainer {
-  transform: scale(1.05) rotate(5deg);
+@keyframes floatSlow3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(20px, 40px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
-.avatar {
+/* 은은한 반짝임(sparkle) 효과 */
+.sparkle {
+  position: absolute;
+  color: #FFF;
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.s1 {
+  top: 15%;
+  left: 25%;
+  animation: blink 4s infinite ease-in-out;
+}
+
+.s2 {
+  top: 25%;
+  right: 20%;
+  animation: blink 5s infinite ease-in-out 1s;
+}
+
+.s3 {
+  bottom: 30%;
+  left: 15%;
+  animation: blink 4.5s infinite ease-in-out 2s;
+}
+
+.s4 {
+  bottom: 20%;
+  right: 30%;
+  animation: blink 3.8s infinite ease-in-out 0.5s;
+}
+
+.s5 {
+  top: 50%;
+  right: 10%;
+  animation: blink 5.2s infinite ease-in-out 1.5s;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.2) rotate(90deg);
+  }
+}
+
+/* 메인 컨텐츠 컨테이너 */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  text-align: center;
+  padding: 2rem;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #020c1b;
+  max-width: 900px;
+}
+
+/* 메인 타이틀 */
+.titleContainer {
+  margin-bottom: -160px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.5rem;
-  color: #fff;
 }
 
-.name {
-  color: #ffffff;
-  font-size: 2.4rem;
+.titleImage {
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+}
+
+.mainTitle {
+  font-size: 6.5rem;
+  /* 화면 가득 크게 */
   font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
   margin: 0;
-  letter-spacing: -0.02em;
-  background: linear-gradient(to right, #ffffff, #a8b2d1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.title {
-  color: #64ffda;
-  font-size: 1.15rem;
-  font-weight: 500;
-  margin: 0.5rem 0 1.5rem 0;
-  letter-spacing: 0.05em;
-}
-
-.divider {
-  width: 50px;
-  height: 4px;
-  background: #64ffda;
-  border-radius: 2px;
-  margin-bottom: 1.5rem;
-  transition: width 0.3s ease;
-}
-
-.card:hover .divider {
-  width: 80px;
-}
-
-.description {
-  color: #a8b2d1;
-  line-height: 1.7;
-  font-size: 1.05rem;
-  margin: 0;
-}
-
-.tags {
   display: flex;
-  gap: 0.6rem;
-  margin-top: 2.5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.tag {
-  background: rgba(100, 255, 218, 0.05);
-  color: #64ffda;
-  padding: 0.5rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border: 1px solid rgba(100, 255, 218, 0.15);
-  transition: all 0.3s ease;
-  cursor: default;
+/* 풍선 글자 개별 스타일 */
+.char {
+  position: relative;
+  display: inline-block;
+  color: #F2C94C;
+  /* 노란색 채움 */
+  -webkit-text-stroke: 7px #2E1A0F;
+  /* 아주 진한 갈색 테두리 */
+  paint-order: stroke fill;
+
+  /* 풍선 입체감을 주기 위한 입체 그림자 */
+  filter:
+    drop-shadow(0 8px 0 #2E1A0F) drop-shadow(0 12px 12px rgba(46, 26, 15, 0.35));
+  margin: 0 4px;
+  /* 자간 넉넉히 */
 }
 
-.tag:hover {
-  background: rgba(100, 255, 218, 0.15);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+/* 풍선 위 흰색 광택(하이라이트) */
+.char::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 28%;
+  height: 22%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: 10;
+  /* background-clip text 간섭 방지를 위한 채우기 초기화 */
+  -webkit-text-fill-color: initial;
+}
+
+/* 공백 처리 */
+.space {
+  display: inline-block;
+  width: 2rem;
+}
+
+/* 서브 타이틀 배지 */
+.subTitleWrapper {
+  margin-bottom: 48px;
+  transform: rotate(2deg);
+  /* 약간 삐딱하게 해서 게임 타이틀 느낌 */
+}
+
+.subBadge {
+  background-color: #2E1A0F;
+  /* 진한 갈색 */
+  border: 4px solid #1E0F0A;
+  border-radius: 12px;
+  padding: 8px 24px;
+  display: inline-block;
+  box-shadow:
+    0 6px 0 rgba(46, 26, 15, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  font-family: var(--font-fredoka), sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.subBadgeTextGreen {
+  color: #4ADE80;
+  /* 초록 글씨 */
+  margin-right: 8px;
+}
+
+.subBadgeTextWhite {
+  color: #FFFFFF;
+  /* 흰색 글씨 */
+}
+
+/* CHECK NOW! 버튼 */
+.buttonWrapper {
+  margin-top: 10px;
+}
+
+.jellyButton {
+  display: inline-block;
+  padding: 16px 48px;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 4px 0 #166534;
+  /* 초록 글자 입체그림자 */
+  text-decoration: none;
+  background: linear-gradient(180deg, #4ADE80 0%, #22C55E 100%);
+  border: 5px solid #5C3D2E;
+  border-radius: 35px;
+  box-shadow:
+    0 10px 0 #3E2723,
+    /* 갈색 입체 그림자 */
+    0 15px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+/* 젤리 상단 광택 하이라이트 */
+.jellyButton::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 10%;
+  width: 80%;
+  height: 35%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.jellyButton:hover {
+  transform: translateY(2px);
+  box-shadow:
+    0 8px 0 #3E2723,
+    0 10px 18px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(180deg, #4ef289 0%, #29d667 100%);
+}
+
+.jellyButton:active {
+  transform: translateY(8px);
+  box-shadow:
+    0 2px 0 #3E2723,
+    0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 반응형 모바일 최적화 */
+@media (max-width: 640px) {
+
+  /* 메인 타이틀 */
+  .mainTitle {
+    @media (max-width: 640px) {
+
+      /* 메인 타이틀 */
+      .mainTitle {
+        position: relative;
+        font-size: clamp(4rem, 13vw, 8.5rem);
+        font-weight: 700;
+        text-align: center;
+        line-height: 0.95;
+        letter-spacing: -2px;
+        word-spacing: 4px;
+        margin: 0;
+
+        /* 노란 그라데이션을 글자에 입힘 */
+        background-image: linear-gradient(180deg, #FBE38A 0%, #F5C842 55%, #E8A91E 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        /* 진한 갈색 테두리 */
+        -webkit-text-stroke: 6px #2E1A0F;
+        paint-order: stroke fill;
+
+        /* 아래쪽 입체 그림자 */
+        filter: drop-shadow(0 6px 0 #2E1A0F) drop-shadow(0 10px 10px rgba(46, 26, 15, 0.3));
+      }
+
+      /* 상단 광택 레이어 */
+      .mainTitle::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        background-image: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.3) 35%,
+            rgba(255, 255, 255, 0) 55%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+
+        -webkit-text-stroke: 0;
+        letter-spacing: -2px;
+        word-spacing: 4px;
+      }
+
+      .subBadge {
+        font-size: 0.95rem;
+        padding: 6px 18px;
+        border-width: 3px;
+        box-shadow:
+          0 4px 0 rgba(46, 26, 15, 0.4),
+          inset 0 2px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      .subTitleWrapper {
+        margin-bottom: 32px;
+      }
+
+      .jellyButton {
+        padding: 14px 38px;
+        font-size: 1.4rem;
+        border-width: 4px;
+        box-shadow:
+          0 8px 0 #3E2723,
+          0 12px 18px rgba(0, 0, 0, 0.2);
+      }
+
+      .jellyButton:hover {
+        transform: translateY(2px);
+        box-shadow:
+          0 6px 0 #3E2723,
+          0 8px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .jellyButton:active {
+        transform: translateY(6px);
+        box-shadow:
+          0 2px 0 #3E2723,
+          0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
 }

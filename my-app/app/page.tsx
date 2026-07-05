@@ -1,33 +1,37 @@
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import styles from './page.module.css';
 
-export default function ProfilePage() {
+export default function Home() {
   return (
     <div className={styles.container}>
-      <div className={styles.blob1}></div>
-      <div className={styles.blob2}></div>
-      
-      <main className={styles.card}>
-        <div className={styles.avatarContainer}>
-          <div className={styles.avatar}>👩🏻‍💻</div>
-        </div>
-        
-        <h1 className={styles.name}>윤혜린</h1>
-        <h2 className={styles.title}>광운대학교 전자통신공학과</h2>
-        
-        <div className={styles.divider}></div>
-        
-        <p className={styles.description}>
-          안녕하세요! 광운대학교 전자통신공학과 4학년에 재학중인 <b>윤혜린</b>입니다.
-          <br /><br />
-          새로운 기술을 배우고 적용하는 것을 좋아하며, 
-          사용자에게 매력적이고 혁신적인 경험을 제공하는 개발자가 되는 것을 목표로 하고 있습니다.
-        </p>
+      {/* 은은한 반짝임(sparkle) 효과 */}
+      <div className={`${styles.sparkle} ${styles.s1}`}>✦</div>
+      <div className={`${styles.sparkle} ${styles.s2}`}>✦</div>
+      <div className={`${styles.sparkle} ${styles.s3}`}>✦</div>
+      <div className={`${styles.sparkle} ${styles.s4}`}>✦</div>
+      <div className={`${styles.sparkle} ${styles.s5}`}>✦</div>
 
-        <div className={styles.tags}>
-          <span className={styles.tag}>Student</span>
-          <span className={styles.tag}>Engineering</span>
-          <span className={styles.tag}>Senior</span>
+      <main className={styles.mainContent}>
+        {/* 메인 타이틀 로고 이미지 */}
+        <div className={styles.titleContainer}>
+          <Image
+            src="/title-logo.png"
+            alt="Youn Hye Rin - Mega Hit Engineer"
+            width={1536}
+            height={1024}
+            className={styles.titleImage}
+            unoptimized
+            priority
+          />
+        </div>
+
+        {/* PLAY NOW 스타일의 CHECK NOW! 버튼 */}
+        <div className={styles.buttonWrapper}>
+          <Link href="/profile" className={styles.jellyButton}>
+            CHECK NOW!
+          </Link>
         </div>
       </main>
     </div>
