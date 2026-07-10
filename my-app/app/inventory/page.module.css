@@ -1,0 +1,512 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFF3A6;
+  font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  padding: 120px 20px 70px;
+}
+
+/* 모바일 화면에서는 세로형 배경 이미지 사용 */
+@media (max-width: 640px) {
+  .container {
+    background-image: url('/background-mobile.png');
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 5;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.backLink {
+  align-self: flex-start;
+  color: #2F8D39;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* 전체를 감싸는 인벤토리 프레임 */
+.wrapper {
+  position: relative;
+  background: #4a9b45;
+  border: 6px solid #2F8D39;
+  border-radius: 32px;
+  padding: 44px 24px 24px;
+  box-shadow: 0 10px 24px rgba(91, 55, 29, 0.25);
+  animation: fadeUp 0.5s ease both;
+}
+
+.wrapperBadge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/badge-banner.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  padding: 12px 30px;
+  white-space: nowrap;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: #FFFDF5;
+  border: 3px solid #B7E0A8;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 카테고리 안에 항목이 여러 개일 때 두 번째 항목부터 구분선으로 분리 */
+.subEntry {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #E7E4D8;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cardIcon {
+  font-size: 1.1rem;
+}
+
+.cardLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2b1d0e;
+  letter-spacing: 0.5px;
+}
+
+/* Education */
+.eduName {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #2b1d0e;
+}
+
+.eduSub {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8a8272;
+  font-weight: 500;
+}
+
+.eduPeriod {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  color: #8a8272;
+  font-weight: 500;
+}
+
+.gpaBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: #F7F7F2;
+  border-radius: 12px;
+  padding: 8px;
+  margin-top: auto;
+}
+
+.gpaLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #a3874e;
+  letter-spacing: 1px;
+}
+
+.stars {
+  color: #F5C842;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.gpaValue {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2b1d0e;
+}
+
+/* Career */
+.timeline {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.timelineDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #72D56B;
+  border: 2px solid #2F8D39;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.careerCompany {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #2b1d0e;
+}
+
+.careerRole {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8a8272;
+  font-weight: 500;
+}
+
+.careerPeriod {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #8a8272;
+  font-weight: 500;
+}
+
+/* Licenses */
+.licenseList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.licenseItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F7F7F2;
+  border: 2px solid #E7E4D8;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #2b1d0e;
+}
+
+.licenseIcon {
+  font-size: 1rem;
+}
+
+/* Languages */
+.langBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.langName {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #2b1d0e;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 8px;
+  background: #EFEFE8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #72D56B;
+  border-radius: 999px;
+}
+
+.langLevel {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #2F8D39;
+  font-weight: 700;
+}
+
+/* Research */
+.researchTitle {
+  flex: 1;
+  margin: 4px 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2b1d0e;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.viewPaperBtn {
+  display: block;
+  width: fit-content;
+  margin: 4px auto 0;
+  padding: 5px 12px;
+  background: #72D56B;
+  border: 2px solid #2F8D39;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.65rem;
+  text-decoration: none;
+}
+
+/* Conference */
+.confTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #2b1d0e;
+}
+
+.confDesc {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #8a8272;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.confTag {
+  display: block;
+  width: fit-content;
+  margin: auto 0 0 auto;
+  background: #2F8D39;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* Extracurricular */
+.extraTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #2b1d0e;
+}
+
+.extraPeriod {
+  margin: 0 0 4px;
+  font-size: 0.75rem;
+  color: #8a8272;
+  font-weight: 500;
+}
+
+.extraDetail {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #2b1d0e;
+  font-weight: 500;
+}
+
+/* Contact */
+.contactButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-decoration: none;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+.contactBtnIcon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.mailBtn {
+  background: #72D56B;
+}
+
+.youtubeBtn {
+  background: #e6483f;
+}
+
+.instagramBtn {
+  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.resumeBtn {
+  background: #FFFDF5;
+  color: #5B371D;
+  border: 2px solid #5B371D;
+}
+
+/* 메일 주소 팝업 */
+.mailModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 29, 14, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1.5rem;
+}
+
+.mailModal {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  background: #FFFDF5;
+  border: 4px solid #72D56B;
+  border-radius: 24px;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mailModalClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ff8a8a;
+  border: 2px solid #a12a24;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mailModalIcon {
+  object-fit: contain;
+}
+
+.mailModalTitle {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #a3874e;
+  letter-spacing: 1px;
+}
+
+.mailModalEmail {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2b1d0e;
+  word-break: break-all;
+  text-align: center;
+}
+
+.mailModalActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.mailModalCopyBtn {
+  padding: 10px;
+  background: #72D56B;
+  border: 2px solid #2F8D39;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.mailModalSendBtn {
+  display: block;
+  padding: 10px;
+  background: #FFFDF5;
+  border: 2px solid #5B371D;
+  border-radius: 12px;
+  color: #5B371D;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 100px 12px 50px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

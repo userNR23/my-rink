@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Nav from './components/Nav';
 import styles from './page.module.css';
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Nav />
+
       {/* 은은한 반짝임(sparkle) 효과 */}
       <div className={`${styles.sparkle} ${styles.s1}`}>✦</div>
       <div className={`${styles.sparkle} ${styles.s2}`}>✦</div>

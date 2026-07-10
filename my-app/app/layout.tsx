@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fredoka } from "next/font/google";
+import FirebaseAnalytics from "./components/FirebaseAnalytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,8 +33,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${fredoka.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <FirebaseAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

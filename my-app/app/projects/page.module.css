@@ -1,0 +1,93 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFF3A6;
+  font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 모바일 화면에서는 세로형 배경 이미지 사용 */
+@media (max-width: 640px) {
+  .container {
+    background-image: url('/background-mobile.png');
+  }
+}
+
+.sparkle {
+  position: absolute;
+  color: #FFF;
+  font-size: 1.6rem;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: blink 4.5s infinite ease-in-out;
+}
+
+.s1 { top: 16%; left: 12%; }
+.s2 { top: 24%; right: 14%; animation-delay: 1s; }
+.s3 { bottom: 20%; left: 20%; animation-delay: 2s; }
+
+@keyframes blink {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 0.9; transform: scale(1.2) rotate(90deg); }
+}
+
+.card {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(160deg, #A8F0A0 0%, #72D56B 100%);
+  border: 6px solid #2F8D39;
+  border-radius: 36px;
+  padding: 48px 56px;
+  box-shadow: 0 12px 0 #5B371D, 0 20px 36px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.icon {
+  font-size: 3rem;
+  animation: floatFruit 2.4s ease-in-out infinite;
+}
+
+@keyframes floatFruit {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.title {
+  margin: 8px 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFF9E6;
+  -webkit-text-stroke: 3px #5B371D;
+  paint-order: stroke fill;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  margin: 0;
+  font-weight: 700;
+  color: #2F8D39;
+  background: #FFF9E6;
+  padding: 6px 18px;
+  border-radius: 16px;
+  border: 2px solid #5B371D;
+}

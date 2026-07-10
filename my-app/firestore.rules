@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/anonymous/items/{itemId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                    && request.auth.token.email == 'wkqrha628@gmail.com';
+    }
+
+    // 링크 클릭 통계: 방문자는 누구나 클릭 집계를 올릴 수 있어야 하므로 쓰기는 공개,
+    // 통계 열람은 소유자만 (마이페이지에서만 보여줌).
+    match /users/anonymous/stats/{statId} {
+      allow read: if request.auth != null
+                    && request.auth.token.email == 'wkqrha628@gmail.com';
+      allow write: if true;
+    }
+  }
+}

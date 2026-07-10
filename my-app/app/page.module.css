@@ -14,6 +14,13 @@
   font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
 }
 
+/* 모바일 화면에서는 세로형 배경 이미지 사용 */
+@media (max-width: 640px) {
+  .container {
+    background-image: url('/background-mobile.png');
+  }
+}
+
 /* 파스텔톤 과일/캔디 blur 구체 */
 .bubble {
   position: absolute;

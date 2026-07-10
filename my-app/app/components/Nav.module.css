@@ -1,0 +1,55 @@
+.nav {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 28px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.nav > * {
+  pointer-events: auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1.15;
+}
+
+.logoMain {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #FFE86B;
+  -webkit-text-stroke: 2px #5B371D;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 2px 0 #5B371D);
+}
+
+.logoSub {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #2F8D39;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 640px) {
+  .nav {
+    top: 12px;
+    padding: 0 12px;
+  }
+
+  .logoMain {
+    font-size: 1rem;
+  }
+
+  .logoSub {
+    font-size: 0.5rem;
+  }
+}
