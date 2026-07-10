@@ -31,6 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
     description: '전설의 톱니바퀴 취뽀를 얻기위한 그녀의 여정...',
     verification: {
       google: 'oKMZAgv-eyyQb0Uug0RzdvJwI5zfDa-vM7fFezC4T2s',
+      other: {
+        'naver-site-verification': '93149b5c0be8f4328465e5ce5a1e9326c0fe8c4f',
+      },
     },
   };
 }
