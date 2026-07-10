@@ -21,7 +21,7 @@ const fredoka = Fredoka({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'
+    process.env.NODE_ENV === 'production' ? 'https://my-rink.vercel.app' : 'http://localhost:3000'
   ),
   title: '윤혜린 프로필',
   description: '광운대학교 전자통신공학과 4학년 윤혜린의 프로필입니다.',
