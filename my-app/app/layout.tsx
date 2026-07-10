@@ -29,6 +29,9 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(`${protocol}://${host}`),
     title: '윤혜린 프로필',
     description: '전설의 톱니바퀴 취뽀를 얻기위한 그녀의 여정...',
+    verification: {
+      google: 'oKMZAgv-eyyQb0Uug0RzdvJwI5zfDa-vM7fFezC4T2s',
+    },
   };
 }
 
