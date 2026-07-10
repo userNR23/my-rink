@@ -88,9 +88,9 @@ export default function ProfilePage() {
             <h1 className={styles.playerName}>YounHyeRin</h1>
             <p className={styles.playerSubtitle}>Mega Hit Engineer</p>
             <div className={styles.quoteBox}>
-              <p>게임 좋아하고 요리도 잘하는 집순이</p>
-              <p>새로운 기술을 탐구하고,</p>
-              <p>문제를 해결하는 엔지니어</p>
+              <p>사회의 쓴 맛을 맛보고</p>
+              <p>세상의 단 맛을 찾으러</p>
+              <p>떠난 엔지니어</p>
             </div>
             <div className={styles.fruitRow}>
               <span>🍉</span>
