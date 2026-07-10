@@ -543,5 +543,13 @@
 
   .quickMenuButton {
     width: 100%;
+    max-width: 100px;
+    margin: 0 auto;
+  }
+
+  .inventoryIcon {
+    max-width: 90px;
+    height: auto;
+    margin: -15px 0;
   }
 }
