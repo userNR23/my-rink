@@ -36,9 +36,14 @@
 
 .backLink {
   align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   color: #2F8D39;
   font-weight: 700;
   font-size: 0.9rem;
+  font-family: inherit;
   text-decoration: none;
 }
 

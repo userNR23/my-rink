@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Nav from '../../components/Nav';
 import { loadCategories, type Category } from '../../lib/categoryStore';
@@ -9,6 +9,7 @@ import styles from './page.module.css';
 
 export default function CategoryDetailPage() {
   const params = useParams<{ category: string }>();
+  const router = useRouter();
   const [categories, setCategories] = useState<Category[] | null>(null);
 
   useEffect(() => {
@@ -30,9 +31,9 @@ export default function CategoryDetailPage() {
       <Nav />
 
       <main className={styles.content}>
-        <Link href="/inventory" className={styles.backLink}>
-          ← Back to Inventory
-        </Link>
+        <button type="button" onClick={() => router.back()} className={styles.backLink}>
+          ← Back
+        </button>
 
         {!activeCategory ? (
           <div className={styles.card}>
