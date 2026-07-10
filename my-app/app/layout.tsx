@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(`${protocol}://${host}`),
     title: '윤혜린 프로필',
-    description: '광운대학교 전자통신공학과 4학년 윤혜린의 프로필입니다.',
+    description: '전설의 톱니바퀴 취뽀를 얻기위한 그녀의 여정...',
   };
 }
 
