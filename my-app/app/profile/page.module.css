@@ -537,19 +537,24 @@
     font-size: 1.5rem;
   }
 
+  .quickMenuSection {
+    max-width: 300px;
+    padding: 30px 8px 10px;
+  }
+
   .quickMenuCell {
-    padding: 0 6px;
+    padding: 0 4px;
   }
 
   .quickMenuButton {
     width: 100%;
-    max-width: 100px;
+    max-width: 75px;
     margin: 0 auto;
   }
 
   .inventoryIcon {
     max-width: 90px;
     height: auto;
-    margin: -15px 0;
+    margin: 12px 0;
   }
 }
