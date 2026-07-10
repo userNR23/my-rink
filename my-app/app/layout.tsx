@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fredoka } from "next/font/google";
+import { headers } from "next/headers";
 import FirebaseAnalytics from "./components/FirebaseAnalytics";
 import "./globals.css";
 
@@ -19,13 +20,17 @@ const fredoka = Fredoka({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NODE_ENV === 'production' ? 'https://my-rink.vercel.app' : 'http://localhost:3000'
-  ),
-  title: '윤혜린 프로필',
-  description: '광운대학교 전자통신공학과 4학년 윤혜린의 프로필입니다.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const host = headersList.get('host') ?? 'localhost:3000';
+  const protocol = host.startsWith('localhost') ? 'http' : 'https';
+
+  return {
+    metadataBase: new URL(`${protocol}://${host}`),
+    title: '윤혜린 프로필',
+    description: '광운대학교 전자통신공학과 4학년 윤혜린의 프로필입니다.',
+  };
+}
 
 export default function RootLayout({
   children,
