@@ -6,9 +6,14 @@ export const alt = 'YounHyeRin - Mega Hit Engineer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+function toDataUri(filename: string): string {
+  const buffer = readFileSync(join(process.cwd(), 'public', filename));
+  return `data:image/png;base64,${buffer.toString('base64')}`;
+}
+
 export default function OpengraphImage() {
-  const logoBuffer = readFileSync(join(process.cwd(), 'public', 'title-logo.png'));
-  const logoSrc = `data:image/png;base64,${logoBuffer.toString('base64')}`;
+  const backgroundSrc = toDataUri('og-background.png');
+  const logoSrc = toDataUri('title-logo.png');
 
   return new ImageResponse(
     (
@@ -17,22 +22,26 @@ export default function OpengraphImage() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'radial-gradient(circle, #FFFDF0 20%, #FEF08A 100%)',
+          position: 'relative',
         }}
       >
-        <div style={{ display: 'flex', gap: 28, fontSize: 56, marginBottom: 24 }}>
-          <span>🍉</span>
-          <span>🍑</span>
-          <span>🫐</span>
-          <span>🍓</span>
-          <span>🍈</span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={backgroundSrc}
+          width={1200}
+          height={630}
+          alt=""
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
 
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} width={680} height={453} alt="YounHyeRin" />
+        <img
+          src={logoSrc}
+          width={330}
+          height={220}
+          alt="YounHyeRin"
+          style={{ position: 'absolute', top: 32, left: 32 }}
+        />
       </div>
     ),
     { ...size }
