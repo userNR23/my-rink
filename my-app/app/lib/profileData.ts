@@ -48,7 +48,7 @@ export const categories: Category[] = [
       {
         title: '학술동아리 활동',
         period: '2024.09 ~ 2027.02',
-        meta: '반도체 학술동아리 SELA 운영진 활동 · PCB Artwork Seminar 개최',
+        meta: '반도체 학술동아리 SELA 운영진 · PCB Artwork Seminar 개최',
       },
     ],
   },
