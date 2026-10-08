@@ -309,7 +309,7 @@ export default function InventoryPage() {
         </div>
 
         <span className={styles.galleryLinkText}>
-          프로젝트 갤러리로 이동 →
+          프로젝트 갤러리로 →
         </span>
       </Link>
     ) : (
