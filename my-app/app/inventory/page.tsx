@@ -298,14 +298,20 @@ export default function InventoryPage() {
     </div>
 
     {cat.key === 'projects' ? (
-      <div className={styles.galleryLinkWrapper}>
-        <Link
-          href="/projects"
-          className={styles.galleryLinkButton}
-        >
+      <Link
+        href="/projects"
+        className={styles.galleryLinkButton}
+      >
+        <div className={styles.galleryFruits} aria-hidden="true">
+          <span className={styles.galleryFruit}>🍓</span>
+          <span className={styles.galleryFruit}>🍊</span>
+          <span className={styles.galleryFruit}>🍉</span>
+        </div>
+
+        <span className={styles.galleryLinkText}>
           프로젝트 갤러리로 이동 →
-        </Link>
-      </div>
+        </span>
+      </Link>
     ) : (
       <div className={styles.licenseList}>
         {cat.items.length === 0 && (
