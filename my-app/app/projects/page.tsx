@@ -5,12 +5,16 @@ import { useEffect, useState } from 'react';
 import { loadCategories, type Category } from '../lib/categoryStore';
 
 import Nav from '../components/Nav';
+import Link from 'next/link';
 import styles from './page.module.css';
 
 const projects = [
   {
     title: 'CFET 소자 자가발열 분석 및 구조 최적화',
-    description: '캡스톤설계 2025.09 ~ 2026.06',
+    
+description: `캡스톤설계
+2025.09 ~ 2026.06`,
+    
     file: '/' + encodeURIComponent(
       '2D 전기열해석을 이용한 CFET 소자의 자가발열 분석 및 구조 최적화 (1).pdf'
     ),
@@ -70,6 +74,24 @@ export default function ProjectsPage() {
 
     <div className={styles.container}>
       <Nav />
+
+      
+<Link
+  href="/profile"
+  style={{
+    position: 'absolute',
+    top: '90px',
+    left: '24px',
+    zIndex: 20,
+    color: '#4e8541',
+    fontSize: '18px',
+    fontWeight: 800,
+    textDecoration: 'none',
+  }}
+>
+  ← Back to Profile
+</Link>
+
 
       <div className={`${styles.sparkle} ${styles.s1}`}>✦</div>
       <div className={`${styles.sparkle} ${styles.s2}`}>✦</div>
