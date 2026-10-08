@@ -296,27 +296,47 @@ export default function InventoryPage() {
       </span>
     </div>
 
-    {cat.key === 'projects' ? (
-      <div>
+   
+{cat.key === 'projects' ? (
+  <div>
+    {cat.items.length === 0 && (
+      <p className={styles.eduSub}>
+        아직 항목이 없습니다.
+      </p>
+    )}
+
+    {cat.items.map((item, i) => (
+      <div
+        key={i}
+        className={i > 0 ? styles.subEntry : undefined}
+      >
         <p className={styles.researchTitle}>
-          2D 전기열해석을 이용한 CFET 소자의
-          자가발열 분석 및 구조 최적화
+          {item.title}
         </p>
 
-        <a
-          href={`/${encodeURIComponent(
-            '2D 전기열해석을 이용한 CFET 소자의 자가발열 분석 및 구조 최적화 (1).pdf'
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.viewPaperBtn}
-          onClick={() =>
-            trackLinkClick('projects', 'CFET Paper')
-          }
-        >
-          VIEW PAPER ▶
-        </a>
+        {item.subtitle && (
+          <p className={styles.eduSub}>
+            {item.subtitle}
+          </p>
+        )}
+
+        {item.url && (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.viewPaperBtn}
+            onClick={() =>
+              trackLinkClick('projects', item.title)
+            }
+          >
+            VIEW PAPER ▶
+          </a>
+        )}
       </div>
+    ))}
+  </div>
+
     ) : (
       <div className={styles.licenseList}>
         {cat.items.length === 0 && (
