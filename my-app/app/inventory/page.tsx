@@ -287,6 +287,7 @@ export default function InventoryPage() {
             )}
 
             
+
 {extraCategories.map((cat) => (
   <div key={cat.key} className={styles.card}>
     <div className={styles.cardHeader}>
@@ -296,45 +297,33 @@ export default function InventoryPage() {
       </span>
     </div>
 
-   
-{cat.key === 'projects' ? (
-  <div>
-    {cat.items.length === 0 && (
-      <p className={styles.eduSub}>
-        아직 항목이 없습니다.
-      </p>
-    )}
-
-    {cat.items.map((item, i) => (
-      <div
-        key={i}
-        className={i > 0 ? styles.subEntry : undefined}
-      >
-        <p className={styles.researchTitle}>
-          {item.title}
-        </p>
-
-        {item.subtitle && (
+    {cat.key === 'projects' ? (
+      <div className={styles.galleryLinkWrapper}>
+        <Link
+          href="/projects"
+          className={styles.galleryLinkButton}
+        >
+          프로젝트 갤러리로 이동 →
+        </Link>
+      </div>
+    ) : (
+      <div className={styles.licenseList}>
+        {cat.items.length === 0 && (
           <p className={styles.eduSub}>
-            {item.subtitle}
+            아직 항목이 없습니다.
           </p>
         )}
 
-        {item.url && (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.viewPaperBtn}
-            onClick={() =>
-              trackLinkClick('projects', item.title)
-            }
-          >
-            VIEW PAPER ▶
-          </a>
-        )}
+        {cat.items.map((item, i) => (
+          <div key={i} className={styles.licenseItem}>
+            <span>{item.title}</span>
+          </div>
+        ))}
       </div>
-    ))}
+    )}
+  </div>
+))}
+
   </div>
 
     ) : (
