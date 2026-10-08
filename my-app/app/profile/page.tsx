@@ -192,7 +192,7 @@ export default function ProfilePage() {
           <div className={styles.quickMenuRow}>
             {quickMenu.map((q) => (
               <div key={q.key} className={styles.quickMenuCell}>
-                <Link href={`/inventory/${q.key}`} className={styles.quickMenuButton}>
+                <Link href={q.key === 'projects' ? '/projects' : `/inventory/${q.key}`} className={styles.quickMenuButton}>
                   <Image
                     src={q.imgSrc}
                     alt={q.label}
