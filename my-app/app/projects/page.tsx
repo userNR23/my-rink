@@ -1,4 +1,9 @@
 
+'use client';
+
+import { useEffect, useState } from 'react';
+import { loadCategories, type Category } from '../lib/categoryStore';
+
 import Nav from '../components/Nav';
 import styles from './page.module.css';
 
@@ -12,8 +17,57 @@ const projects = [
     type: 'PDF',
   },
 ];
+
 export default function ProjectsPage() {
+  const [cmsProjects, setCmsProjects] =
+    useState<Category['items']>([]);
+
+  useEffect(() => {
+    let active = true;
+
+    loadCategories()
+      .then((categories) => {
+        if (!active) return;
+
+        const category = categories.find(
+          (cat) => cat.key === 'projects'
+        );
+
+        setCmsProjects(category?.items ?? []);
+      })
+      .catch((error) => {
+        console.error('프로젝트 CMS 로딩 실패:', error);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const allProjects = [
+    ...projects,
+    ...cmsProjects
+      .filter(
+        (item) =>
+          Boolean(item.url?.trim()) &&
+          item.title !== projects[0].title
+      )
+      .map((item) => ({
+        title: item.title,
+        description: [
+          item.subtitle ? `과목 · ${item.subtitle}` : '',
+          item.period ? `기간 · ${item.period}` : '',
+          item.meta ?? '',
+        ]
+          .filter(Boolean)
+          .join('\n'),
+        file: item.url?.trim() ?? '',
+        type: 'PDF',
+      })),
+  ];
+
   return (
+
     <div className={styles.container}>
       <Nav />
 
@@ -41,7 +95,7 @@ export default function ProjectsPage() {
           width: '100%',
           marginTop: '24px',
         }}>
-          {projects.map((project) => (
+         {allProjects.map((project) => (
             <a
               key={project.title}
               href={project.file}
@@ -64,9 +118,10 @@ export default function ProjectsPage() {
                 📄 {project.title} ↗
               </div>
               <p style={{
-                fontSize: '13px',
-                margin: '8px 0',
-              }}>
+  fontSize: '13px',
+  margin: '8px 0',
+  whiteSpace: 'pre-line',
+}}>
                 {project.description}
               </p>
               <small>{project.type} · 자료 보기</small>
