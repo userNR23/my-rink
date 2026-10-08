@@ -320,7 +320,7 @@ export default function InventoryPage() {
           </p>
         )}
 
-        {cat.items.map((item, i) => (
+         {cat.items.map((item, i) => (
           <div key={i} className={styles.licenseItem}>
             <span>{item.title}</span>
           </div>
@@ -329,24 +329,6 @@ export default function InventoryPage() {
     )}
   </div>
 ))}
-
-  </div>
-
-    ) : (
-      <div className={styles.licenseList}>
-        {cat.items.length === 0 && (
-          <p className={styles.eduSub}>
-            아직 항목이 없습니다.
-          </p>
-        )}
-
-        {cat.items.map((item, i) => (
-          <div key={i} className={styles.licenseItem}>
-            <span>{item.title}</span>
-          </div>
-        ))}
-
-
 
           </div>
         </div>
