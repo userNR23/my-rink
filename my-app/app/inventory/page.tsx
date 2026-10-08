@@ -345,8 +345,7 @@ export default function InventoryPage() {
             <span>{item.title}</span>
           </div>
         ))}
-      </div>
-    )}
+
 
 
           </div>
