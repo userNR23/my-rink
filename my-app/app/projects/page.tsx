@@ -10,7 +10,7 @@ import styles from './page.module.css';
 const projects = [
   {
     title: 'CFET 소자 자가발열 분석 및 구조 최적화',
-    description: '2D 전기·열 해석 기반 CFET 구조 최적화 연구',
+    description: '캡스톤설계 2025.09 ~ 2026.06',
     file: '/' + encodeURIComponent(
       '2D 전기열해석을 이용한 CFET 소자의 자가발열 분석 및 구조 최적화 (1).pdf'
     ),
@@ -55,8 +55,8 @@ export default function ProjectsPage() {
       .map((item) => ({
         title: item.title,
         description: [
-          item.subtitle ? `과목 · ${item.subtitle}` : '',
-          item.period ? `기간 · ${item.period}` : '',
+          item.subtitle ?? '',
+          item.period ?? '',
           item.meta ?? '',
         ]
           .filter(Boolean)
