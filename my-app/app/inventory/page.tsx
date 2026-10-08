@@ -286,22 +286,55 @@ export default function InventoryPage() {
               </div>
             )}
 
-            {extraCategories.map((cat) => (
-              <div key={cat.key} className={styles.card}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardIcon}>{cat.icon}</span>
-                  <span className={styles.cardLabel}>{cat.label.toUpperCase()}</span>
-                </div>
-                <div className={styles.licenseList}>
-                  {cat.items.length === 0 && <p className={styles.eduSub}>아직 항목이 없습니다.</p>}
-                  {cat.items.map((item, i) => (
-                    <div key={i} className={styles.licenseItem}>
-                      <span>{item.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+            
+{extraCategories.map((cat) => (
+  <div key={cat.key} className={styles.card}>
+    <div className={styles.cardHeader}>
+      <span className={styles.cardIcon}>{cat.icon}</span>
+      <span className={styles.cardLabel}>
+        {cat.label.toUpperCase()}
+      </span>
+    </div>
+
+    {cat.key === 'projects' ? (
+      <div>
+        <p className={styles.researchTitle}>
+          2D 전기열해석을 이용한 CFET 소자의
+          자가발열 분석 및 구조 최적화
+        </p>
+
+        <a
+          href={`/${encodeURIComponent(
+            '2D 전기열해석을 이용한 CFET 소자의 자가발열 분석 및 구조 최적화 (1).pdf'
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.viewPaperBtn}
+          onClick={() =>
+            trackLinkClick('projects', 'CFET Paper')
+          }
+        >
+          VIEW PAPER ▶
+        </a>
+      </div>
+    ) : (
+      <div className={styles.licenseList}>
+        {cat.items.length === 0 && (
+          <p className={styles.eduSub}>
+            아직 항목이 없습니다.
+          </p>
+        )}
+
+        {cat.items.map((item, i) => (
+          <div key={i} className={styles.licenseItem}>
+            <span>{item.title}</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+))}
+
           </div>
         </div>
       </main>
